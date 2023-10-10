@@ -1,13 +1,19 @@
-#/usr/bin/env bash
-# This is a script to automate some popularly used git commands
+#!/usr/bin/env bash
+# Script to run some basic git commands
 
 git pull
+pull=$?
+if [[ "$pull" -ne 0 ]]
+then
+        echo "Fix git pull error and run script again"
+        exit
+fi
+
 git add .
 
 # Prompt for commit message
 echo "Please enter your commit message: "
-read message
+read -r message
 
 git commit -m "$message"
-git push
-
+git push origin HEAD
