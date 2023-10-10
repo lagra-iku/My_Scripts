@@ -1,0 +1,13 @@
+#/usr/bin/env bash
+# This is a script to automate some popularly used git commands
+
+git pull
+git add .
+
+# Prompt for commit message
+echo "Please enter your commit message: "
+read message
+
+git commit -m "$message"
+git push
+
