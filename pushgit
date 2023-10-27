@@ -1,0 +1,11 @@
+#!/usr/bin/env python3
+# Script to run some basic git commands in python
+
+try:
+    git pull
+    git add .
+    commit_msg = input("Please enter your commit message: ")
+    git commit -m commit_msg
+    git push origin HEAD
+except exception as e:
+    print("Handle the stipulated error message")
