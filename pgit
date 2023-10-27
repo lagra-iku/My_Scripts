@@ -1,19 +1,17 @@
 #!/usr/bin/env bash
-# Script to run some basic git commands
+# Script to run basic Git commands in bash
 
-git pull
-pull=$?
-if [[ "$pull" -ne 0 ]]
-then
-        echo "Fix git pull error and run script again"
-        exit
-fi
+git_cmd() {
+    git "$@"
+    local exit_code=$?
+    if [[ "$exit_code" -ne 0 ]]; then
+        echo "Fix the Git command error and run the script again."
+        exit "$exit_code"
+    fi
+}
 
-git add .
-
-# Prompt for commit message
-echo "Please enter your commit message: "
-read -r message
-
-git commit -m "$message"
-git push origin HEAD
+git_cmd pull
+git_cmd add .
+read -p "Please enter your commit message: " message
+git_cmd commit -m "$message"
+git_cmd push origin HEAD
