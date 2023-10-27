@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 # Script to run basic Git commands in Python
 
-
 import subprocess
+
 
 def git_cmd(command, *args):
     try:
         subprocess.run(["git", command, *args])
     except Exception as e:
         print(f"Error while running 'git {command}': {e}")
+
 
 if __name__ == "__main__":
     git_cmd("pull")
