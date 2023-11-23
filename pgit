@@ -10,7 +10,6 @@ git_cmd() {
     fi
 }
 
-git_cmd pull
 git_cmd add .
 read -p "Please enter your commit message: " message
 git_cmd commit -m "$message"
